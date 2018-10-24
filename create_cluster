@@ -22,7 +22,7 @@ create_cluster <- function(nnodes, libroute = NULL) {
       envir = environment()
     ) # "Environment"
 
-    ## Cargar las librerias a todos los clusters
+    ## Charge the packages in all nodes
     if (is.null(libroute)) { # Use default library location
       parallel::parLapply(cl, 1:length(cl), function(xx) {
         lapply(loaded.package.names, function(yy) {
