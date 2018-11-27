@@ -80,3 +80,40 @@ read_delim2sqlite <- function(delim_file, delim, sqlite_file, table_name, batch_
   ## close the database connection
   dbDisconnect(condb)
 }
+
+#--------------------------------------------------
+# Example
+
+# ## create data
+# 
+# # Folder with the data
+# fpath <- "C:/Proyects/Bigdata"
+# 
+# # csv or txt file
+# delim_file <- file.path(fpath, "Very_big_csv.csv")
+# 
+# #name for the table inside the sqlite
+# table_name <- "bigdata"
+# sqlite_file <- file.path(fpath,"bigdata.sqlite3")
+# 
+# ## using read_delim
+# read_delim2sqlite(delim_file,delim=";", sqlite_file, table_name=table_name, batch_size=500000)
+# 
+# 
+# 
+# #Gather some data
+# con <- dbConnect(SQLite(), paste0(fpath,"/bigdata.sqlite3"))
+# con
+# 
+# dbListTables(con) #see the name of the database
+# 
+# datos_db <- tbl(con, "bigdata")
+# 
+# 
+# summarys<-datos_db %>%
+#   group_by(Variable_group) %>%
+#   summarise(
+#     something = n()
+#   )
+# 
+# sum_total<-collect(summarys)
